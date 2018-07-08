@@ -1,2 +1,4 @@
-Sample作ります。
-ほにゃららら〜
+@startuml{Sample.png}
+package sample {
+}
+@enduml

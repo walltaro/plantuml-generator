@@ -24,7 +24,7 @@ public abstract class DiagramGenerator {
 		// PUMLファイルを生成する。
 		File createdPumlFile = createPumlFile(targetFile);
 		// 対象ファイルから出力コレクションを生成する。
-		Collection<?> lines = createLines(targetFile);
+		Collection<?> lines = readAndCreateLines(targetFile);
 		// PUMLファイルに出力コレクションを書き込む
 		write(createdPumlFile, lines);
 
@@ -41,7 +41,10 @@ public abstract class DiagramGenerator {
 	 * @return
 	 */
 	private File createPumlFile(File targetFile) {
-		File createFile = new File(FilenameUtils.getBaseName(targetFile.getName()) + FileConstants.PUML_EXTENTION);
+		// FIXME PUML生成先いま適当です
+		String createFileName = "/Users/wataru/Developer/puml/" + FilenameUtils.getBaseName(targetFile.getName()) + FileConstants.PUML_EXTENTION;
+		File createFile = new File(createFileName);
+		System.out.println("絶対パス：" + createFileName);
 		if (createFile.exists()) {
 			System.out.println("既に存在するファイルです。ファイル名：" + createFile.getName());
 			return createFile;
@@ -66,7 +69,7 @@ public abstract class DiagramGenerator {
 	 * @param targetFile
 	 * @return
 	 */
-	protected abstract Collection<?> createLines(File targetFile);
+	protected abstract Collection<?> readAndCreateLines(File targetFile);
 
 	/**
 	 * <PRE>

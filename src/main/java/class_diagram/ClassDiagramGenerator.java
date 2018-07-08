@@ -1,4 +1,4 @@
-package generator;
+package class_diagram;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 
 import constants.FileConstants;
 import diagrams.UmlDiagrams;
+import generator.DiagramGenerator;
 import object.DiagramObject;
 
 public class ClassDiagramGenerator extends DiagramGenerator {
@@ -26,12 +27,32 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 	 * @return
 	 */
 	@Override
-	protected Collection<?> createLines(File targetFile) {
+	protected Collection<?> readAndCreateLines(File targetFile) {
 		DiagramObject diagramObject = readSourceByFile(targetFile);
-		Collection<String> lines = new ArrayList<>();
-		lines.add("Sample作ります。");
-		lines.add("ほにゃららら〜");
+		Collection<?> lines = createLines(diagramObject);
 		return lines;
+	}
+
+	/**
+	 * クラス図出力ライン生成クラスを呼び出して出力ラインを生成する。
+	 * @param diagramObject
+	 * @return
+	 */
+	private Collection<?> createLines(DiagramObject diagramObject) {
+		ClassDiagramLinesGenerator linesGenerator = new ClassDiagramLinesGenerator();
+		Collection<?> lines = linesGenerator.generate(diagramObject);
+
+		return lines;
+	}
+
+	/**
+	 * ダイアログオブジェクトのデータを書き換える
+	 * FIXME あとで削除する。
+	 * @param diagramObject
+	 */
+	private void example(DiagramObject diagramObject) {
+		diagramObject.setOutputImageName("Sample" + FileConstants.PNG_EXTENTION);
+		diagramObject.setPackageName("sample");
 	}
 
 	/**
@@ -52,6 +73,7 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 		for (String fileContent : fileContents) {
 			expound(fileContent, diagramObject);
 		}
+		example(diagramObject);
 		return diagramObject;
 	}
 

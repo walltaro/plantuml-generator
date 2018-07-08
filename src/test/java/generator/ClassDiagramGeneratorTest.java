@@ -7,6 +7,8 @@ import java.io.File;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 
+import class_diagram.ClassDiagramGenerator;
+
 public class ClassDiagramGeneratorTest {
 
 	@Test
