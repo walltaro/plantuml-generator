@@ -1,16 +1,18 @@
 package object;
 
+import java.util.List;
+
+import behavior.ObjectBehavior;
+import diagrams.ClassType;
+
 public class DiagramObject {
 	/**
 	 * 出力PNGファイル名
 	 */
 	private String outputImageName;
 
-	/**
-	 * パッケージ名
-	 */
-	private String packageName;
 
+	private List<ObjectBehavior> objectBehaviorList;
 
 
 	public String getOutputImageName() {
@@ -21,12 +23,12 @@ public class DiagramObject {
 		this.outputImageName = outputImageName;
 	}
 
-	public String getPackageName() {
-		return packageName;
+	public List<ObjectBehavior> getObjectBehaviorList() {
+		return objectBehaviorList;
 	}
 
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
+	public void setObjectBehaviorList(List<ObjectBehavior> objectBehaviorList) {
+		this.objectBehaviorList = objectBehaviorList;
 	}
 
 

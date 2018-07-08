@@ -8,11 +8,22 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import behavior.ClassTypeBehavior;
+import behavior.ObjectBehavior;
+import behavior.PackageBehavior;
+import behavior.RelationBehavior;
 import constants.FileConstants;
+import diagrams.ClassType;
+import diagrams.RelationType;
 import diagrams.UmlDiagrams;
 import generator.DiagramGenerator;
 import object.DiagramObject;
 
+/**
+ * クラス図生成クラス
+ * @author wataru
+ *
+ */
 public class ClassDiagramGenerator extends DiagramGenerator {
 	public ClassDiagramGenerator() {
 		umlDiagram = UmlDiagrams.ClassDiagram;
@@ -41,7 +52,6 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 	private Collection<?> createLines(DiagramObject diagramObject) {
 		ClassDiagramLinesGenerator linesGenerator = new ClassDiagramLinesGenerator();
 		Collection<?> lines = linesGenerator.generate(diagramObject);
-
 		return lines;
 	}
 
@@ -52,7 +62,29 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 	 */
 	private void example(DiagramObject diagramObject) {
 		diagramObject.setOutputImageName("Sample" + FileConstants.PNG_EXTENTION);
-		diagramObject.setPackageName("sample");
+
+		ClassTypeBehavior classTypeBehavior = new ClassTypeBehavior();
+		classTypeBehavior.setName("Car");
+		classTypeBehavior.setClassType(ClassType.Class);
+
+		ClassTypeBehavior classTypeBehavior2 = new ClassTypeBehavior();
+		classTypeBehavior2.setName("Vehicle");
+		classTypeBehavior2.setClassType(ClassType.Interface);
+
+		RelationBehavior relationBehavior = new RelationBehavior();
+		relationBehavior.setParent("Vehicle");
+		relationBehavior.setChild("Car");
+		relationBehavior.setRelationType(RelationType.Generalization);
+
+		PackageBehavior packageBehavior = new PackageBehavior();
+		packageBehavior.setName("sample");
+		packageBehavior.add(classTypeBehavior);
+		packageBehavior.add(classTypeBehavior2);
+		packageBehavior.add(relationBehavior);
+
+		List<ObjectBehavior> packageBehaviorList = new ArrayList<>();
+		packageBehaviorList.add(packageBehavior);
+		diagramObject.setObjectBehaviorList(packageBehaviorList);
 	}
 
 	/**

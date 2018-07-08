@@ -12,4 +12,6 @@ public final class FileConstants {
 	public static final String DEFAULT_CHAR_SET = "UTF-8";
 	/** 追記モード：オフ */
 	public static final boolean NOT_APPEND = false;
+	/** スペース */
+	public static final String SPACE = " ";
 }
