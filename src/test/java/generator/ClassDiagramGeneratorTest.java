@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 
 public class ClassDiagramGeneratorTest {
@@ -14,10 +15,12 @@ public class ClassDiagramGeneratorTest {
 		ClassDiagramGenerator sut = new ClassDiagramGenerator();
 		try {
 			sut.generate(file);
-
 		}  catch (Exception e) {
-			fail("想定していないエラー");
+			fail("想定していないエラーです。テストを終了します。");
 		}
+		File actual = new File("");
+		File expected = new File("");
+		assertThat(actual, is(expected));
 		assertTrue(true);
 	}
 
