@@ -24,6 +24,11 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 		Collection<String> lines = new ArrayList<>();
 		lines.add("Sample作ります。");
 		lines.add("ほにゃららら〜");
+		feature3();
 		return lines;
+	}
+
+	private void feature3() {
+		System.out.println("feature3 is.");
 	}
 }
