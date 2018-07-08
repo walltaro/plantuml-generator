@@ -9,4 +9,4 @@ public class Sample {
 	  public int getValue() {
 		  return value;
 	  }
-	}
+}
