@@ -3,6 +3,7 @@ package behavior;
 import java.util.Collection;
 
 import diagrams.ClassType;
+import static constants.CommonConstants.SPACE;
 
 /**
  * クラスタイプ振る舞いクラス
@@ -13,7 +14,7 @@ public class ClassTypeBehavior extends ObjectBehavior {
 	private ClassType classType;
 	@Override
 	protected void startBehave(Collection<String> lines) {
-		if (getName() != null) lines.add(classType.getOutputContent() + " " + getName() + " {");
+		if (getName() != null) lines.add(classType.getOutputContent() + SPACE + getName() + " {");
 	}
 	/**
 	 * abstract Figure {

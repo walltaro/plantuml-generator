@@ -3,7 +3,7 @@ package behavior;
 import java.util.Collection;
 
 import diagrams.RelationType;
-import static constants.FileConstants.SPACE;
+import static constants.CommonConstants.SPACE;
 
 public class RelationBehavior extends ObjectBehavior {
 	/**

@@ -19,6 +19,7 @@ public abstract class ObjectBehavior {
 		}
 		endBehave(lines);
 	}
+
 	protected abstract void startBehave(Collection<String> lines);
 	protected void endBehave(Collection<String> lines) {
 		// 処理を実施する場合はオーバーライドする。

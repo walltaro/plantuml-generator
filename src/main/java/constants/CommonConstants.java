@@ -1,7 +1,7 @@
 package constants;
 
-public final class FileConstants {
-	private FileConstants() {
+public final class CommonConstants {
+	private CommonConstants() {
 
 	}
 	/** 拡張子：PUML */
@@ -14,4 +14,7 @@ public final class FileConstants {
 	public static final boolean NOT_APPEND = false;
 	/** スペース */
 	public static final String SPACE = " ";
+	/** カンマ */
+	public static final String COMMA = ",";
+
 }

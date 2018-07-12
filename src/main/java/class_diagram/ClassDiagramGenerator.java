@@ -9,11 +9,16 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 import behavior.ClassTypeBehavior;
+import behavior.ClassUmlBehavior;
+import behavior.MethodBehavior;
 import behavior.ObjectBehavior;
 import behavior.PackageBehavior;
+import behavior.PropertyBehavior;
 import behavior.RelationBehavior;
-import constants.FileConstants;
+import constants.CommonConstants;
+import diagrams.AccessModifiers;
 import diagrams.ClassType;
+import diagrams.OtherModifiers;
 import diagrams.RelationType;
 import diagrams.UmlDiagrams;
 import generator.DiagramGenerator;
@@ -61,11 +66,31 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 	 * @param diagramObject
 	 */
 	private void example(DiagramObject diagramObject) {
-		diagramObject.setOutputImageName("Sample" + FileConstants.PNG_EXTENTION);
+		diagramObject.setOutputImageName("Sample" + CommonConstants.PNG_EXTENTION);
 
 		ClassTypeBehavior classTypeBehavior = new ClassTypeBehavior();
 		classTypeBehavior.setName("Car");
 		classTypeBehavior.setClassType(ClassType.Class);
+
+		PropertyBehavior handleBehavior = new PropertyBehavior();
+		handleBehavior.setName("handle");
+		handleBehavior.setDataType("Handle");
+
+		MethodBehavior driveBehavior = new MethodBehavior();
+		driveBehavior.setName("drive");
+		driveBehavior.setReturnDataType("void");
+
+		MethodBehavior stopBehavior = new MethodBehavior();
+		stopBehavior.setName("stop");
+		stopBehavior.setReturnDataType("boolean");
+		stopBehavior.setAccessModifier(AccessModifiers.Public);
+		stopBehavior.addOtherModifier(OtherModifiers.Static);
+		stopBehavior.putArgsData("second", "int");
+
+
+		classTypeBehavior.add(handleBehavior);
+		classTypeBehavior.add(driveBehavior);
+		classTypeBehavior.add(stopBehavior);
 
 		ClassTypeBehavior classTypeBehavior2 = new ClassTypeBehavior();
 		classTypeBehavior2.setName("Vehicle");
@@ -84,7 +109,12 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 
 		List<ObjectBehavior> packageBehaviorList = new ArrayList<>();
 		packageBehaviorList.add(packageBehavior);
-		diagramObject.setObjectBehaviorList(packageBehaviorList);
+
+		ClassUmlBehavior classUmlBehavior = new ClassUmlBehavior();
+		classUmlBehavior.setName("Sample" + CommonConstants.PNG_EXTENTION);
+		classUmlBehavior.add(packageBehavior);
+		diagramObject.setObjectBehavior(classUmlBehavior);
+
 	}
 
 	/**
@@ -96,7 +126,7 @@ public class ClassDiagramGenerator extends DiagramGenerator {
 		List<String> fileContents = null;
 		try {
 			// ファイルの内容を行単位で全量取得する。
-			fileContents = FileUtils.readLines(targetFile,FileConstants.DEFAULT_CHAR_SET);
+			fileContents = FileUtils.readLines(targetFile,CommonConstants.DEFAULT_CHAR_SET);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}

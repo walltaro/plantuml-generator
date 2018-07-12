@@ -1,9 +1,8 @@
 package object;
 
-import java.util.List;
+import java.util.Collection;
 
 import behavior.ObjectBehavior;
-import diagrams.ClassType;
 
 public class DiagramObject {
 	/**
@@ -11,8 +10,7 @@ public class DiagramObject {
 	 */
 	private String outputImageName;
 
-
-	private List<ObjectBehavior> objectBehaviorList;
+	private ObjectBehavior objectBehavior;
 
 
 	public String getOutputImageName() {
@@ -23,14 +21,12 @@ public class DiagramObject {
 		this.outputImageName = outputImageName;
 	}
 
-	public List<ObjectBehavior> getObjectBehaviorList() {
-		return objectBehaviorList;
+	public void setObjectBehavior(ObjectBehavior objectBehavior) {
+		this.objectBehavior = objectBehavior;
 	}
 
-	public void setObjectBehaviorList(List<ObjectBehavior> objectBehaviorList) {
-		this.objectBehaviorList = objectBehaviorList;
+	public void behave(Collection<String> lines) {
+		objectBehavior.behave(lines);
 	}
-
-
 
 }

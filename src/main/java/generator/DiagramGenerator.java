@@ -7,7 +7,7 @@ import java.util.Collection;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
-import constants.FileConstants;
+import constants.CommonConstants;
 import diagrams.UmlDiagrams;
 
 public abstract class DiagramGenerator {
@@ -42,7 +42,7 @@ public abstract class DiagramGenerator {
 	 */
 	private File createPumlFile(File targetFile) {
 		// FIXME PUML生成先いま適当です
-		String createFileName = "/Users/wataru/Developer/puml/" + FilenameUtils.getBaseName(targetFile.getName()) + FileConstants.PUML_EXTENTION;
+		String createFileName = "/Users/wataru/Developer/puml/" + FilenameUtils.getBaseName(targetFile.getName()) + CommonConstants.PUML_EXTENTION;
 		File createFile = new File(createFileName);
 		System.out.println("絶対パス：" + createFileName);
 		if (createFile.exists()) {
@@ -82,7 +82,7 @@ public abstract class DiagramGenerator {
 	 */
 	private void write(File createdPumlFile, Collection<?> lines) {
 		try {
-			FileUtils.writeLines(createdPumlFile, FileConstants.DEFAULT_CHAR_SET, lines, FileConstants.NOT_APPEND);
+			FileUtils.writeLines(createdPumlFile, CommonConstants.DEFAULT_CHAR_SET, lines, CommonConstants.NOT_APPEND);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
